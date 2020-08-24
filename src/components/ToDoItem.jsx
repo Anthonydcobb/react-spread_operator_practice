@@ -1,24 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
 function ToDoItem(props) {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const lineThrough = {
-    textDecoration: "line-through",
-    color: "red"
-  };
-
-  function handleClick() {
-    setIsChecked((prevValue) => {
-      return !prevValue;
-    });
-  }
+  function handleClick() {}
 
   return (
-    <div onClick={handleClick}>
-      <li style={{ textDecoration: isChecked ? "line-through" : "none" }}>
-        {props.newItem}
-      </li>
+    <div
+      onClick={() => {
+        props.onClick(props.id);
+      }}
+    >
+      <li>{props.newItem}</li>
     </div>
   );
 }

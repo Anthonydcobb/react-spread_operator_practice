@@ -17,6 +17,14 @@ function App() {
     setInputText("");
   }
 
+  function deleteItem(id) {
+    setItems((prevValue) => {
+      return prevValue.filter((item, index) => {
+        return index !== id;
+      });
+    });
+  }
+
   return (
     <div className="container">
       <div className="heading">
@@ -30,8 +38,13 @@ function App() {
       </div>
       <div>
         <ul>
-          {items.map((item) => (
-            <ToDoItem newItem={item} />
+          {items.map((item, index) => (
+            <ToDoItem
+              key={index}
+              id={index}
+              newItem={item}
+              onClick={deleteItem}
+            />
           ))}
         </ul>
       </div>
